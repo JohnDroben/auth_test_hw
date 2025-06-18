@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="welcome-section">
+    <h1 class="display-4">Добро пожаловать в AuthSystem</h1>
+    <p class="lead">Безопасная система аутентификации пользователей</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center">
+                <div class="feature-icon text-primary">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <h3 class="card-title">Безопасность</h3>
+                <p class="card-text">Наша система обеспечивает надежную защиту ваших данных с использованием современных технологий шифрования.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 feature-card">
+            <div class="card-body text-center">
+                <div class="feature-icon text-success">
+                    <i class="bi bi-person-badge"></i>
+                </div>
+                <h3 class="card-title">Управление профилем</h3>
+                <p class="card-text">Обновляйте ваши личные данные, управляйте настройками учетной записи и следите за активностью.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<div class="text-center mt-5">
+    <a href="{% url 'profile' %}" class="btn btn-primary btn-lg">
+        <i class="bi bi-person-circle me-2"></i>Перейти в профиль
+    </a>
+</div>
+{% else %}
+<div class="text-center mt-5">
+    <div class="d-grid gap-3 d-md-block">
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg me-md-3">
+            <i class="bi bi-box-arrow-in-right me-2"></i>Войти в систему
+        </a>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg">
+            <i class="bi bi-person-plus me-2"></i>Зарегистрироваться
+        </a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+
